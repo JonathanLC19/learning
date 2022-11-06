@@ -1,2 +1,2 @@
+from gettext import install
 import numpy as np
-import django as dj
