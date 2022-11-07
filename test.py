@@ -29,6 +29,6 @@ book2 = Book("El Señor de los Anillos", "JRR Tolkien", False)
 
 print(book2.title)
 print(book2.author)
-print(book2.electronic)
+print(book2.is_electronic)
 print(book2.__dict__)
 
