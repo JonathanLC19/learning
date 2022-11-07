@@ -8,3 +8,5 @@ book1 = Book()
 type(book1)
 
 print(book1)
+
+print(Book.is_electronic)
