@@ -10,7 +10,7 @@ class Book():
   #is_electronic = False
 
   ##Método Constructor
-  def __init__(self, title, author, electronic):
+  def __init__(self, title, author = "", electronic = False):
     self.title = title
     self.author = author
     self.is_electronic = electronic
@@ -32,3 +32,7 @@ print(book2.author)
 print(book2.is_electronic)
 print(book2.__dict__)
 
+book3 = Book("Harry Potter")
+
+print(book3.is_electronic)
+print(book3.__dict__)
