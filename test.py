@@ -1,1 +1,4 @@
-import numpy as np
+#Clases en python
+
+class Book():
+  is_electronic = False
