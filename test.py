@@ -36,3 +36,24 @@ book3 = Book("Harry Potter")
 
 print(book3.is_electronic)
 print(book3.__dict__)
+
+##Ejercicio
+##Vamos a crear la clase RationalNumber. Vamos a configurar el constructor de modo que haya un atributo numerator y otro denominator, este último con 1 como valor por defecto. Ambos atributos deben ser números enteros.
+
+class RationalNumber():
+
+  def __init__(self, n, d = 1):
+    if type(n) is int and type(d) is int:
+      self.numerator = n
+      self.denominator = d
+    else:
+      print("numerador y denominador deben ser enteros")
+
+
+
+rn1 = RationalNumber(3)
+
+print(rn1.__dict__)
+
+##Método Deconstructor
+
