@@ -1,5 +1,6 @@
 ###Clases en python
 
+import random
 
 class Book():
   ##docstrings
@@ -52,6 +53,14 @@ class Rectangle():
     if rect1.base == rect2.base and rect1.height == rect2.height:
       return True
     return False
+
+  ##Método de clases
+  #Este método usa la propia clase para crear un objeto
+  @classmethod
+  def random_rect(cls):
+    base = random.randrange(1, 10)
+    height = random.randrange(1, 10)
+    return cls(base, height)
  
 #-------------------------------------------------------------------------------- 
 # book1 = Book()
@@ -132,8 +141,9 @@ rect3 = Rectangle(12,10)
 #print(int(rn1.quotient()))
 #print(rn1.isInfinite())
 
-print(rect2, "\n")
-print(rect3, "\n")
-print(Rectangle.equal_size(rect2, rect3))
+#print(rect2, "\n")
+#print(rect3, "\n")
+#print(Rectangle.equal_size(rect2, rect3))
 
-
+rect4 = Rectangle().random_rect()
+print(rect4)
