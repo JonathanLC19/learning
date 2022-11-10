@@ -45,6 +45,13 @@ class Rectangle():
   def __str__(self):
     return ("Base: {}\nAltura: {}".format(self.base, self.height))
 
+  ##Método estático
+  #Los métodos estáticos se definen usando el decorador `@staticmethod`, que se añade antes de definir el método estático respectivo.
+  @staticmethod
+  def equal_size(rect1,rect2):
+    if rect1.base == rect2.base and rect1.height == rect2.height:
+      return True
+    return False
  
 #-------------------------------------------------------------------------------- 
 # book1 = Book()
@@ -120,10 +127,13 @@ rect2 = Rectangle(12,10)
 
 #print(rect2.base_big(14))
 
-rect3 = Rectangle(7,3)
+rect3 = Rectangle(12,10)
 
-print(int(rn1.quotient()))
-print(rn1.isInfinite())
+#print(int(rn1.quotient()))
+#print(rn1.isInfinite())
 
+print(rect2, "\n")
+print(rect3, "\n")
+print(Rectangle.equal_size(rect2, rect3))
 
 
