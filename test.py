@@ -43,7 +43,7 @@ class Rectangle():
 
   ##Método .__str__
   def __str__(self):
-    return ("Base: {}\nAltura: {}".format(self.base(), self.height()))
+    return ("Base: {}\nAltura: {}".format(self.base, self.height))
 
  
 #-------------------------------------------------------------------------------- 
@@ -111,4 +111,4 @@ rect2 = Rectangle(12,10)
 
 rect3 = Rectangle(7,3)
 
-print(rect3.__str__)
+print(rect3)
