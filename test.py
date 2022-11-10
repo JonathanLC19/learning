@@ -84,10 +84,21 @@ class RationalNumber():
       self.denominator = d
     else:
       print("numerador y denominador deben ser enteros")
+  
+  #Implementa el método de instancia .quotient() que devuelva el cociente
+  def quotient(self):
+    return self.numerator / self.denominator
+
+  #Implementa el método de instancia .isInfinite() que devuelva si el denominador es 0 o no
+  def isInfinite(self):
+    if self.denominator == 0:
+      return True
+    return False
+
+  #Implementa el método de instancia .simplify() que simplifique la fracción a la fracción irreducible
 
 
-
-rn1 = RationalNumber(3)
+rn1 = RationalNumber(3,3)
 
 #print(rn1.__dict__)
 
@@ -111,4 +122,8 @@ rect2 = Rectangle(12,10)
 
 rect3 = Rectangle(7,3)
 
-print(rect3)
+print(int(rn1.quotient()))
+print(rn1.isInfinite())
+
+
+
