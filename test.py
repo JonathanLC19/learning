@@ -1,5 +1,6 @@
 ###Clases en python
 
+import random
 
 class Book():
   ##docstrings
@@ -45,6 +46,21 @@ class Rectangle():
   def __str__(self):
     return ("Base: {}\nAltura: {}".format(self.base, self.height))
 
+  ##Método estático
+  #Los métodos estáticos se definen usando el decorador `@staticmethod`, que se añade antes de definir el método estático respectivo.
+  @staticmethod
+  def equal_size(rect1,rect2):
+    if rect1.base == rect2.base and rect1.height == rect2.height:
+      return True
+    return False
+
+  ##Método de clases
+  #Este método usa la propia clase para crear un objeto
+  @classmethod
+  def random_rect(cls):
+    base = random.randrange(1, 10)
+    height = random.randrange(1, 10)
+    return cls(base, height)
  
 #-------------------------------------------------------------------------------- 
 # book1 = Book()
@@ -84,10 +100,21 @@ class RationalNumber():
       self.denominator = d
     else:
       print("numerador y denominador deben ser enteros")
+  
+  #Implementa el método de instancia .quotient() que devuelva el cociente
+  def quotient(self):
+    return self.numerator / self.denominator
+
+  #Implementa el método de instancia .isInfinite() que devuelva si el denominador es 0 o no
+  def isInfinite(self):
+    if self.denominator == 0:
+      return True
+    return False
+
+  #Implementa el método de instancia .simplify() que simplifique la fracción a la fracción irreducible
 
 
-
-rn1 = RationalNumber(3)
+rn1 = RationalNumber(3,3)
 
 #print(rn1.__dict__)
 
@@ -109,6 +136,14 @@ rect2 = Rectangle(12,10)
 
 #print(rect2.base_big(14))
 
-rect3 = Rectangle(7,3)
+rect3 = Rectangle(12,10)
 
-print(rect3)
+#print(int(rn1.quotient()))
+#print(rn1.isInfinite())
+
+#print(rect2, "\n")
+#print(rect3, "\n")
+#print(Rectangle.equal_size(rect2, rect3))
+
+rect4 = Rectangle().random_rect()
+print(rect4)
