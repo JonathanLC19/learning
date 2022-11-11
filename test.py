@@ -147,3 +147,25 @@ rect3 = Rectangle(12,10)
 
 rect4 = Rectangle().random_rect()
 print(rect4)
+
+
+#PRÁCTICA: Crear una clase llamando a los atributos con método @property
+
+class Person():
+  def __init__(self, n, s):
+    self.name = n
+    self.surname = s
+
+  @property
+  def completeName(self):
+    return self.name +" "+self.surname
+
+  @property
+  def createEmail(self):
+    minusc = self.name
+    return minusc.lower()+"@gamil.com"
+
+
+miNombre = Person("Jonathan", "López")
+
+print(miNombre.completeName +"\n"+ miNombre.createEmail)
