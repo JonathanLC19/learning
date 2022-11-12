@@ -146,19 +146,27 @@ rect3 = Rectangle(12,10)
 #print(Rectangle.equal_size(rect2, rect3))
 
 rect4 = Rectangle().random_rect()
-print(rect4)
+#print(rect4)
 
 
 #PRÁCTICA: Crear una clase llamando a los atributos con método @property
 
-class Person():
-  def __init__(self, n, s):
+class Person(object): #al ser una clase base que otras va a usar de herencia añadimos 'object' para dejarlo claro, pero no es necesario en la práctica
+  def __init__(self, n, s, a):
     self.name = n
     self.surname = s
+    self.age = a
 
   @property
   def completeName(self):
     return self.name +" "+self.surname
+  
+  #Parámetro .setter() para poder modificar una propiedad
+  @completeName.setter
+  def completeName(self, name_surname):
+    n, s = name_surname.split(" ")
+    self.name = n
+    self.surname = s
 
   @property
   def createEmail(self):
@@ -166,6 +174,20 @@ class Person():
     return minusc.lower()+"@gamil.com"
 
 
-miNombre = Person("Jonathan", "López")
+miNombre = Person("Jonathan", "López", 42)
 
 print(miNombre.completeName +"\n"+ miNombre.createEmail)
+
+##Herencias de clase
+#Crear una clase a partir de otra
+#Ej.: crear una clase Children y otra Adult a partir de la clase Person para determinar si la persona es mayor de edad o no 
+
+class Children(Person):
+  is_adult = False
+
+class Adult(Person):
+    is_adult = True
+
+child1 = Children("Pablo", "López", 9)
+print(child1.completeName)
+print(child1.age)
