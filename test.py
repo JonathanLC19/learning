@@ -176,7 +176,7 @@ class Person(object): #al ser una clase base que otras va a usar de herencia añ
 
 miNombre = Person("Jonathan", "López", 42)
 
-print(miNombre.completeName +"\n"+ miNombre.createEmail)
+#print(miNombre.completeName +"\n"+ miNombre.createEmail)
 
 ##Herencias de clase
 #Crear una clase a partir de otra
@@ -189,5 +189,32 @@ class Adult(Person):
     is_adult = True
 
 child1 = Children("Pablo", "López", 9)
-print(child1.completeName)
-print(child1.age)
+print#(child1.completeName)
+#print(child1.age)
+
+##Crear una clase a partir de sobreescribir un método de otra
+
+class secondName(Person):
+  @property
+  def completeName(self):
+    return self.name +" "+self.surname
+
+  @completeName.setter
+  def completeName(self, name_surname):
+    names = name_surname.split(" ") #esto separa los atributos convirtiéndolos en una lista
+    self.surname = names[-1] # toma el último valor de la lista como el atributo apellido
+    if len(names) > 2:
+      self.name = " ".join(names[:len(names)-1]) #al haber sacado el último valor para apellido, la longitud de names quedaría como el nombre si tiene más de 2
+    elif len(names) == 2:
+      self.name = names[0]
+
+  
+brother = secondName("Luís", "López", 50)
+
+brother.completeName = "Luis Miguel López"
+print(brother.__dict__)
+
+sister = secondName("Mariola", "López", 51)
+print(sister.__dict__)
+
+
