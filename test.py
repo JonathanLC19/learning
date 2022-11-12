@@ -212,9 +212,33 @@ class secondName(Person):
 brother = secondName("Luís", "López", 50)
 
 brother.completeName = "Luis Miguel López"
-print(brother.__dict__)
+#print(brother.__dict__)
 
 sister = secondName("Mariola", "López", 51)
-print(sister.__dict__)
+#print(sister.__dict__)
 
+
+class Developer(Person):
+
+  def __str__(self):
+    return "EL desarrollador que creó este código se llama {}".format(super().completeName)
+
+class ProgLang(object):
+
+  @staticmethod
+  def progVersion(language, version):
+    print("El lenguaje de programación que usa es {} {}".format(language, version))
+
+dev1 = Developer("Jonathan", "López", 42)
+#print(dev1)
+
+#lang1 = ProgLang.progVersion("Python", "3.14")
+#print(lang1)
+
+class DevProfile (Developer, ProgLang):
+  pass
+
+developer = DevProfile("Pepe", "Pérez", 23)
+print(developer)
+DevProfile.progVersion("Java", "12.0")
 
