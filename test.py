@@ -241,5 +241,3 @@ class DevProfile (Developer, ProgLang):
 developer = DevProfile("Pepe", "Pérez", 23)
 print(developer)
 DevProfile.progVersion("Java", "12.0")
-
->>>>>>>>> Temporary merge branch 2
