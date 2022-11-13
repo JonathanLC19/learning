@@ -242,9 +242,4 @@ developer = DevProfile("Pepe", "Pérez", 23)
 print(developer)
 DevProfile.progVersion("Java", "12.0")
 
-print(brother.__dict__)
-
-sister = secondName("Mariola", "López", 51)
-print(sister.__dict__)
-
-
+>>>>>>>>> Temporary merge branch 2
