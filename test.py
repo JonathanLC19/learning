@@ -146,4 +146,98 @@ rect3 = Rectangle(12,10)
 #print(Rectangle.equal_size(rect2, rect3))
 
 rect4 = Rectangle().random_rect()
-print(rect4)
+#print(rect4)
+
+
+#PRÁCTICA: Crear una clase llamando a los atributos con método @property
+
+class Person(object): #al ser una clase base que otras va a usar de herencia añadimos 'object' para dejarlo claro, pero no es necesario en la práctica
+  def __init__(self, n, s, a):
+    self.name = n
+    self.surname = s
+    self.age = a
+
+  @property
+  def completeName(self):
+    return self.name +" "+self.surname
+  
+  #Parámetro .setter() para poder modificar una propiedad
+  @completeName.setter
+  def completeName(self, name_surname):
+    n, s = name_surname.split(" ")
+    self.name = n
+    self.surname = s
+
+  @property
+  def createEmail(self):
+    minusc = self.name
+    return minusc.lower()+"@gamil.com"
+
+
+miNombre = Person("Jonathan", "López", 42)
+
+#print(miNombre.completeName +"\n"+ miNombre.createEmail)
+
+##Herencias de clase
+#Crear una clase a partir de otra
+#Ej.: crear una clase Children y otra Adult a partir de la clase Person para determinar si la persona es mayor de edad o no 
+
+class Children(Person):
+  is_adult = False
+
+class Adult(Person):
+    is_adult = True
+
+child1 = Children("Pablo", "López", 9)
+print#(child1.completeName)
+#print(child1.age)
+
+##Crear una clase a partir de sobreescribir un método de otra
+
+class secondName(Person):
+  @property
+  def completeName(self):
+    return self.name +" "+self.surname
+
+  @completeName.setter
+  def completeName(self, name_surname):
+    names = name_surname.split(" ") #esto separa los atributos convirtiéndolos en una lista
+    self.surname = names[-1] # toma el último valor de la lista como el atributo apellido
+    if len(names) > 2:
+      self.name = " ".join(names[:len(names)-1]) #al haber sacado el último valor para apellido, la longitud de names quedaría como el nombre si tiene más de 2
+    elif len(names) == 2:
+      self.name = names[0]
+
+  
+brother = secondName("Luís", "López", 50)
+
+brother.completeName = "Luis Miguel López"
+#print(brother.__dict__)
+
+sister = secondName("Mariola", "López", 51)
+#print(sister.__dict__)
+
+
+class Developer(Person):
+
+  def __str__(self):
+    return "EL desarrollador que creó este código se llama {}".format(super().completeName)
+
+class ProgLang(object):
+
+  @staticmethod
+  def progVersion(language, version):
+    print("El lenguaje de programación que usa es {} {}".format(language, version))
+
+dev1 = Developer("Jonathan", "López", 42)
+#print(dev1)
+
+#lang1 = ProgLang.progVersion("Python", "3.14")
+#print(lang1)
+
+class DevProfile (Developer, ProgLang):
+  pass
+
+developer = DevProfile("Pepe", "Pérez", 23)
+print(developer)
+DevProfile.progVersion("Java", "12.0")
