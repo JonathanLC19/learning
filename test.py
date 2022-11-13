@@ -212,6 +212,7 @@ class secondName(Person):
 brother = secondName("Luís", "López", 50)
 
 brother.completeName = "Luis Miguel López"
+<<<<<<< HEAD
 #print(brother.__dict__)
 
 sister = secondName("Mariola", "López", 51)
@@ -242,3 +243,11 @@ developer = DevProfile("Pepe", "Pérez", 23)
 print(developer)
 DevProfile.progVersion("Java", "12.0")
 
+=======
+print(brother.__dict__)
+
+sister = secondName("Mariola", "López", 51)
+print(sister.__dict__)
+
+
+>>>>>>> 6f87f8a5a2d573b714fd654748accb922269c6bc
