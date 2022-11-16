@@ -40,7 +40,7 @@ def vote(request, question_id):
         selected_choice.save()
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
 
-class ModelListView(ListView):
-    model = Model
-    template_name = ".html"
+#class ModelListView(ListView):
+#model = Model
+#template_name = ".html"
 
