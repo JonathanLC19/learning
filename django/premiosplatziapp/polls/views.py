@@ -2,30 +2,52 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import Question, Choice
+from django.views import generic
 
 
 # Create your views here.
 
-def index(request):
-    latest_question_list = Question.objects.all()
-    return render(request, "polls/index.html", {
-        "latest_question_list": latest_question_list
-    })
+# def index(request):
+#     latest_question_list = Question.objects.all()
+#     return render(request, "polls/index.html", {
+#         "latest_question_list": latest_question_list
+#     })
 
 
-def detail(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, "polls/detail.html", {
-        "question": question
-    })
+# def detail(request, question_id):
+#     question = get_object_or_404(Question, pk=question_id)
+#     return render(request, "polls/detail.html", {
+#         "question": question
+#     })
 
-def results(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, "polls/results.html", {
-        "question": question
-    })
+# def results(request, question_id):
+#     question = get_object_or_404(Question, pk=question_id)
+#     return render(request, "polls/results.html", {
+#         "question": question
+#     })
+
+## GENERIC VIEWS (se usan cuando se sigue un patrón concreto en todas las vistas)
+class IndexView(generic.ListView):
+    template_name = "polls/index.html"
+    context_object_name = "latest_question_list"
+
+    def get_queryset(self):
+        """return last 5 published questions"""
+        return Question.objects.order_by("-pub_date")[:5] #el signo '-' al inicio del atributo es para devolver los valores ordenados de Z a A (de más recientes a más antiguas, en este caso)
+        #el [:5] me trae los primeros 5 valores de la lista de preguntas
 
 
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = "polls/detail.html"
+
+    
+class ResultView(generic.DetailView):
+    model = Question
+    template_name = "polls/results.html"
+    
+
+## FUNCTION BASED VIEW
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
