@@ -50,3 +50,27 @@ let persona = {
 
 console.log(persona.nombre); // Juan
 console.log(persona["edad"]); // 30
+
+// Objeto con funciones
+
+let persona2 = {
+    nombre: "Juan",
+    edad: 30,
+    saludar: function() {
+        console.log(`Hola, mi nombre es ${this.nombre}`);
+    }
+};
+
+persona2.saludar(); // Hola, mi nombre es Juan
+
+// Anidación de Objetos:
+
+let empresa = {
+    nombre: "Tech Corp",
+    direccion: {
+        calle: "Calle Falsa 123",
+        ciudad: "Ciudad Ejemplo"
+    }
+};
+
+console.log(empresa.direccion.calle); // Calle Falsa 123
